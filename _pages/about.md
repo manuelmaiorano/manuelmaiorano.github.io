@@ -1,5 +1,6 @@
 ---
-title: "Projects"
+title: "About"
 permalink: /about/
-layout: posts
+layout: single
+author_profile: true
 ---
