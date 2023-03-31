@@ -10,56 +10,56 @@ The python module of choice is beautifulsoup that allows you to parse an html fi
 To present the gathered information i came up with a very primitive way of generating automatically generating a html page with all the images and the information. Finally i wrapped everything up with a shell script that reads the file, downloads the new movies added, generates the html and opens the page on a browser.
 
 This is the main python script:
-`
-    from imdb_scraper import IMDB_scraper, NoSearchResultException
-    from html_generator import HTML_generator
-    from item_cache import Item_cache
-    import os
+```python
+from imdb_scraper import IMDB_scraper, NoSearchResultException
+from html_generator import HTML_generator
+from item_cache import Item_cache
+import os
 
-    def read_queries():
-        queries = []
-        with open('queries.txt') as file:
-            for line in file:
-                line = line.replace('\n', '').replace(':', '')
-                queries.append(line)
-        return queries
+def read_queries():
+    queries = []
+    with open('queries.txt') as file:
+        for line in file:
+            line = line.replace('\n', '').replace(':', '')
+            queries.append(line)
+    return queries
 
-    def store_website(index, other_pages):
+def store_website(index, other_pages):
+    try:
+        os.makedirs(f'htmldoc/{HTML_generator.PAGES_DIR_NAME}')
+    except FileExistsError:
+        pass
+    
+    with open('htmldoc/index.html', 'w') as file:
+        file.write(index)
+
+    for page in other_pages:
+        with open(f'htmldoc/{page.path}', 'w') as file:
+            file.write(page.html_doc)
+
+if __name__ == '__main__':
+    scraper = IMDB_scraper()
+    html_generator = HTML_generator()
+    queries = read_queries()
+
+    cache = Item_cache('htmldoc')
+
+    new_queries, old_queries = cache.get_new_queries(queries, delete_old=True)
+    print(f'new: {len(new_queries)}')
+    print(f'old: {len(old_queries)}')
+
+    for query in new_queries:
         try:
-            os.makedirs(f'htmldoc/{HTML_generator.PAGES_DIR_NAME}')
-        except FileExistsError:
-            pass
-        
-        with open('htmldoc/index.html', 'w') as file:
-            file.write(index)
+            item, photos = scraper.scrape_from_query(query)
+        except NoSearchResultException as exception:
+            print(exception.args)
+            continue
+        cache.add(query, item, photos)
+    
+    for cached_item in cache.retrieved_items.values():
+        html_generator.add_item(cached_item.item, cached_item.photo_paths)
 
-        for page in other_pages:
-            with open(f'htmldoc/{page.path}', 'w') as file:
-                file.write(page.html_doc)
+    store_website(html_generator.get_main_page(), html_generator.pages)
 
-    if __name__ == '__main__':
-        scraper = IMDB_scraper()
-        html_generator = HTML_generator()
-        queries = read_queries()
-
-        cache = Item_cache('htmldoc')
-
-        new_queries, old_queries = cache.get_new_queries(queries, delete_old=True)
-        print(f'new: {len(new_queries)}')
-        print(f'old: {len(old_queries)}')
-
-        for query in new_queries:
-            try:
-                item, photos = scraper.scrape_from_query(query)
-            except NoSearchResultException as exception:
-                print(exception.args)
-                continue
-            cache.add(query, item, photos)
-        
-        for cached_item in cache.retrieved_items.values():
-            html_generator.add_item(cached_item.item, cached_item.photo_paths)
-
-        store_website(html_generator.get_main_page(), html_generator.pages)
-
-        cache.save()
-`
+    cache.save()
+```
