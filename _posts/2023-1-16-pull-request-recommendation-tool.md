@@ -9,7 +9,7 @@ This tool given a pull request on github automatically recommends a list of poss
 
 The tool is deployed on PyPI with a github action; similarly a documentation is automatically generated at every push to the main branch using Sphinx.
 
-Here's the way you use as a command line tool:
+Here's the way you use it as a command line tool:
 
 ```bash
 usage: review_recommender [-h] owner repo num token
@@ -26,8 +26,17 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
-and here's a sample output:
+and here's a sample output (i tried it on the log4j repository):
 
 ```bash
+Reviewer         | Score      
+-----------------------------
+vy               | 24.66 %
+rgoers           | 19.96 %
+DongjianPeng     | 15.44 %
+dafengsu7        | 9.98 %
+schlosna         | 9.98 %
+jvz              | 9.98 %
+marcwrobel       | 9.98 %
 
 ```
