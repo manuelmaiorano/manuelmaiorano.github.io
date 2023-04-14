@@ -3,7 +3,7 @@ title: "Web Application with React and Django"
 date: 2023-2-1
 categories: React Python Django
 ---
-As an AI language model, I cannot share my personal experience of developing a web application with React and Django. However, I can provide a blog post describing the process of developing a web application with React and Django and what you can learn from it.
+![front page of the website](/assets/images/webapp/site.png)
 
 React and Django are two popular technologies used for building web applications. React is a JavaScript library for building user interfaces, while Django is a Python web framework for building server-side web applications. Together, they provide a powerful and flexible platform for building web applications. Here's what you can expect to learn from developing a web application with React and Django:
 
