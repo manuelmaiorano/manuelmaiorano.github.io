@@ -3,7 +3,10 @@ title: "Web Application with React and Django"
 date: 2023-2-1
 categories: React Python Django
 ---
+I decided to learn a web development framework by doing a simple web app that calculates the probability that a certain football team will win a league. I used React/Bootstrap for the frontend and django for the backend and i deployed everything on Vercel.
 ![front page of the website](/assets/images/webapp/site.png)
+You can visit the page at [Website](https://league-predictor-backend-django.vercel.app/index){:target="_blank"}{:rel="noopener noreferrer"}.
+
 
 React and Django are two popular technologies used for building web applications. React is a JavaScript library for building user interfaces, while Django is a Python web framework for building server-side web applications. Together, they provide a powerful and flexible platform for building web applications. Here's what you can expect to learn from developing a web application with React and Django:
 
@@ -19,11 +22,7 @@ Django provides a powerful and flexible platform for building server-side web ap
 
 Integrating React and Django is a key aspect of building a modern web application. You will learn how to use tools like webpack and Babel to build and bundle your React code, and how to use Django's built-in support for serving static files to serve your bundled React code. You will also learn how to use Django's REST framework to build a powerful API that can be consumed by your React front-end.
 
-4. Authentication and Authorization
-
-Authentication and authorization are important aspects of building a secure web application. You will learn how to use Django's built-in authentication system to handle user authentication and how to use Django's permission system to control access to your API endpoints. You will also learn how to use JSON Web Tokens (JWTs) to provide stateless authentication and authorization for your React front-end.
-
-5. Deployment and Scaling
+4. Deployment
 
 Deploying and scaling a web application can be a challenging task. You will learn how to use tools like Docker and Kubernetes to package and deploy your web application to a production environment. You will also learn how to use cloud services like AWS and Google Cloud Platform to scale your web application to handle high traffic and demand.
 

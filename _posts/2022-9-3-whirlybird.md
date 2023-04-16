@@ -3,8 +3,8 @@ title: "Whirlybird with pygame"
 date: 2022-9-3
 categories: Python Pygame
 ---
-Pygame is a popular Python library for game development. It provides a set of modules and functions for creating games, including graphics, sound, input handling, and more. Programming a game using Pygame can be a fun and rewarding experience, as it allows you to unleash your creativity and build your own game from scratch. Here are some things you can learn about game programming while using Pygame:
-
+Pygame is a popular Python library for game development. It provides a set of modules and functions for creating games, including graphics, sound, input handling, and more. Programming a game using Pygame can be a fun and rewarding experience, as it allows you to unleash your creativity and build your own game from scratch. Here are some things you can learn about game programming while using Pygame to develop a simple clone of the whirlybird game:
+![the game window](/assets/images/whirlybird/img2.png)
 1. Game Loop
 
 One of the most important concepts in game programming is the game loop. The game loop is responsible for updating the game state and drawing the screen at a consistent frame rate. Pygame provides a simple game loop that you can use to start building your game.
