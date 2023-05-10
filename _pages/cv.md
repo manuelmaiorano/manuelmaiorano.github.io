@@ -1,7 +1,7 @@
 ---
 title: "CV"
 permalink: /cv/
-layout: cv
+layout: single
 author_profile: true
 ---
 
